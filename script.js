@@ -1,8 +1,14 @@
-// Dark / Light Mode Toggle
-const toggleBtn = document.getElementById("themeToggle");
+const sections = document.querySelectorAll(".section");
 
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("light");
-  toggleBtn.textContent =
-    document.body.classList.contains("light") ? "☀️" : "🌙";
-});
+const revealOnScroll = () => {
+  sections.forEach(section => {
+    const top = section.getBoundingClientRect().top;
+    if (top < window.innerHeight - 120) {
+      section.classList.add("show");
+    }
+  });
+};
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
